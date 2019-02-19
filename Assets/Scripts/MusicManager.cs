@@ -14,13 +14,8 @@ public class MusicManager : MonoBehaviour
     {
         if(Time.time > musicDelay)
         {
-            LoadNextScene();
+            SceneLoader.LoadNextScene();
             this.GetComponent<MusicManager>().enabled = false;
         }
-    }
-
-    private static void LoadNextScene()
-    {
-        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
     }
 }
