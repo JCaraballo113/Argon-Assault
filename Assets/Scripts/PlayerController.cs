@@ -4,18 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float speed = 4f;
+    [Header("General")]
+    [SerializeField] float controlSpeed = 4f;
     [SerializeField] float xRange = 5f;
     [SerializeField] float yRange = 3f;
 
+    [Header("Screen-position Based")]
     [SerializeField] float positionPitchFactor = -5f;
-    [SerializeField] float controlPitchFactor = -5f;
-    
-    [SerializeField] float controlRollFactor = -11f;
-
     [SerializeField] float positionYawFactor = -10f;
+
+    [Header("Control-throw Based")]
+    [SerializeField] float controlPitchFactor = -5f;
+    [SerializeField] float controlRollFactor = -11f;
     float xThrow, yThrow;
 
     // Start is called before the first frame update
@@ -46,16 +48,21 @@ public class Player : MonoBehaviour
         xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
         yThrow = CrossPlatformInputManager.GetAxis("Vertical");
 
-        float xOffset = speed * Time.deltaTime * xThrow;
+        float xOffset = controlSpeed * Time.deltaTime * xThrow;
         float rawNewXPos = transform.localPosition.x + xOffset;
         float clampedXPos = Mathf.Clamp(rawNewXPos, -xRange, xRange);
 
-        float yOffset = speed * Time.deltaTime * yThrow;
+        float yOffset = controlSpeed * Time.deltaTime * yThrow;
         float rawYPos = transform.localPosition.y + yOffset;
         float clampedYPos = Mathf.Clamp(rawYPos, -yRange, yRange);
 
 
         Vector3 moveVector = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
         transform.localPosition = moveVector;
+    }
+
+    public void OnPlayerDeath()
+    {
+        this.enabled = false;
     }
 }
