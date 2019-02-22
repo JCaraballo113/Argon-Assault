@@ -15,7 +15,6 @@ public class CollisionHandler : MonoBehaviour
 
     private void StartDeathSequence()
     {
-        print("Player dying");
         gameObject.GetComponent<PlayerController>().enabled = false;
         Instantiate(deathExplosion, transform.position, Quaternion.identity);
         Invoke("ReloadScene", levelLoadDelay);

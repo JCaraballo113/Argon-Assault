@@ -19,7 +19,6 @@ public class Enemy : MonoBehaviour, IKillable
 
     private void OnParticleCollision(GameObject other)
     {
-        print("Particles collided with enemy " + gameObject.name);
         Kill();
     }
 
