@@ -6,11 +6,15 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IKillable
 {
     [SerializeField] GameObject explosionFX;
+    [SerializeField] Transform parent;
+    [SerializeField] EnemyType enemyType = EnemyType.Light;
+
+    ScoreBoard scoreBoard;
 
     void Start()
     {
-        BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
-        boxCollider.isTrigger = false;
+        gameObject.AddComponent<BoxCollider>();
+        scoreBoard = FindObjectOfType<ScoreBoard>();
     }
 
     private void OnParticleCollision(GameObject other)
@@ -21,7 +25,9 @@ public class Enemy : MonoBehaviour, IKillable
 
     public void Kill()
     {
-        Instantiate(explosionFX, transform.position, Quaternion.identity);
+        GameObject instance = Instantiate(explosionFX, transform.position, Quaternion.identity);
+        instance.transform.parent = parent;
+        scoreBoard.ScoreHit(enemyType);
         Destroy(gameObject);
     }
 }
