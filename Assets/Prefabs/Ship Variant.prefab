@@ -48,6 +48,9 @@ MonoBehaviour:
   positionYawFactor: 6.5
   controlPitchFactor: -20
   controlRollFactor: -20
+  guns:
+  - {fileID: 1374055257219324540}
+  - {fileID: 3458829161112285985}
 --- !u!114 &1872151437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,6 +63,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ab34df24ef50043ae9da6fce046194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelLoadDelay: 1
+  deathExplosion: {fileID: 2888352817163753909, guid: 16f04138dc1caf2409cbd73f30360681,
+    type: 3}
 --- !u!1001 &1374055255519117864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -139,22 +145,22 @@ PrefabInstance:
     - target: {fileID: 2526982501947248425, guid: fda36363e61ce1e4f9e4d0d43b2da58d,
         type: 3}
       propertyPath: m_Name
-      value: Bullet (1)
+      value: Bullet Left
       objectReference: {fileID: 0}
     - target: {fileID: 2526982501947248424, guid: fda36363e61ce1e4f9e4d0d43b2da58d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.75
+      value: -0.721
       objectReference: {fileID: 0}
     - target: {fileID: 2526982501947248424, guid: fda36363e61ce1e4f9e4d0d43b2da58d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.189
       objectReference: {fileID: 0}
     - target: {fileID: 2526982501947248424, guid: fda36363e61ce1e4f9e4d0d43b2da58d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.79
+      value: 0.216
       objectReference: {fileID: 0}
     - target: {fileID: 2526982501947248424, guid: fda36363e61ce1e4f9e4d0d43b2da58d,
         type: 3}
@@ -196,8 +202,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2526982501947248430, guid: fda36363e61ce1e4f9e4d0d43b2da58d,
+        type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526982501947248430, guid: fda36363e61ce1e4f9e4d0d43b2da58d,
+        type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526982501947248430, guid: fda36363e61ce1e4f9e4d0d43b2da58d,
+        type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fda36363e61ce1e4f9e4d0d43b2da58d, type: 3}
+--- !u!1 &3458829161112285985 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2526982501947248425, guid: fda36363e61ce1e4f9e4d0d43b2da58d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1374055256088755208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3458829159963383125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -208,22 +235,22 @@ PrefabInstance:
     - target: {fileID: 2526982501947248425, guid: fda36363e61ce1e4f9e4d0d43b2da58d,
         type: 3}
       propertyPath: m_Name
-      value: Bullet
+      value: Bullet Right
       objectReference: {fileID: 0}
     - target: {fileID: 2526982501947248424, guid: fda36363e61ce1e4f9e4d0d43b2da58d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.77
+      value: 0.703
       objectReference: {fileID: 0}
     - target: {fileID: 2526982501947248424, guid: fda36363e61ce1e4f9e4d0d43b2da58d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.189
       objectReference: {fileID: 0}
     - target: {fileID: 2526982501947248424, guid: fda36363e61ce1e4f9e4d0d43b2da58d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.79
+      value: 0.216
       objectReference: {fileID: 0}
     - target: {fileID: 2526982501947248424, guid: fda36363e61ce1e4f9e4d0d43b2da58d,
         type: 3}
@@ -267,3 +294,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fda36363e61ce1e4f9e4d0d43b2da58d, type: 3}
+--- !u!1 &1374055257219324540 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2526982501947248425, guid: fda36363e61ce1e4f9e4d0d43b2da58d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3458829159963383125}
+  m_PrefabAsset: {fileID: 0}

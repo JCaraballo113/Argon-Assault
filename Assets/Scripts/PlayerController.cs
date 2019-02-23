@@ -20,10 +20,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float controlRollFactor = -11f;
     float xThrow, yThrow;
 
+    [Header("Ship parts")]
+    [SerializeField] GameObject[] guns;
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -31,16 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         ProcessTranslation();
         ProcessRotation();
-    }
-
-    private void ProcessRotation()
-    {
-
-        float pitch = transform.localPosition.y * positionPitchFactor + yThrow * controlPitchFactor;
-        float yaw = transform.localPosition.x * positionYawFactor;
-        float roll =  xThrow * controlRollFactor;
-
-        transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+        ProcessFiring();
     }
 
     private void ProcessTranslation()
@@ -59,6 +52,44 @@ public class PlayerController : MonoBehaviour
 
         Vector3 moveVector = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
         transform.localPosition = moveVector;
+    }
+
+    private void ProcessRotation()
+    {
+
+        float pitch = transform.localPosition.y * positionPitchFactor + yThrow * controlPitchFactor;
+        float yaw = transform.localPosition.x * positionYawFactor;
+        float roll = xThrow * controlRollFactor;
+
+        transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+    }
+
+    private void ProcessFiring()
+    {
+        if (CrossPlatformInputManager.GetButton("Fire"))
+        {
+            ActivateGuns();
+        }
+        else
+        {
+            DeactivateGuns();
+        }
+    }
+
+    private void ActivateGuns()
+    {
+        foreach (GameObject gun in guns)
+        {
+            gun.SetActive(true);
+        }
+    }
+
+    private void DeactivateGuns()
+    {
+        foreach(GameObject gun in guns)
+        {
+            gun.SetActive(false);
+        }
     }
 
     public void OnPlayerDeath()
