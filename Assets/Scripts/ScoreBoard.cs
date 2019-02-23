@@ -7,12 +7,6 @@ public class ScoreBoard : MonoBehaviour
 {
     [SerializeField] Text scoreText;
     int score = 0;
-    Dictionary<EnemyType, int> enemyValues = new Dictionary<EnemyType, int>
-    {
-        {EnemyType.Light, 10 },
-        {EnemyType.Medium, 20 },
-        {EnemyType.Heavy, 30 }
-    };
 
     // Start is called before the first frame update
     void Start()
@@ -26,9 +20,24 @@ public class ScoreBoard : MonoBehaviour
         
     }
 
+    int GetEnemyScore(EnemyType enemyType)
+    {
+        switch(enemyType)
+        {
+            case EnemyType.Light:
+                return 10;
+            case EnemyType.Medium:
+                return 20;
+            case EnemyType.Heavy:
+                return 30;
+            default:
+                return 0;
+        }
+    }
+
     public void ScoreHit(EnemyType enemyType)
     {
-        score += enemyValues[enemyType];
+        score += GetEnemyScore(enemyType);
         scoreText.text = score.ToString();
     }
 }
