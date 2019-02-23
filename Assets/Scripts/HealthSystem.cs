@@ -7,8 +7,10 @@ using UnityEngine.UI;
 public class HealthSystem : MonoBehaviour
 {
     [SerializeField] int healthPoints = 100;
-    private int maxHealth;
     [SerializeField] Image healthBar;
+
+    private int maxHealth;
+    
 
     // Start is called before the first frame update
     void Start()

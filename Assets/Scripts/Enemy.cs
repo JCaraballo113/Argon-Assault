@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
-    [SerializeField] GameObject explosionFX;
-    [SerializeField] Transform parent;
+    [Header("General")]
     [SerializeField] EnemyType enemyType = EnemyType.Light;
-    HealthSystem healthSystem;
+    [SerializeField] Transform parent;
+
+    [Header("Effects")]
+    [SerializeField] GameObject explosionFX;
     [SerializeField] GameObject hitFX;
 
+    HealthSystem healthSystem;
     ScoreBoard scoreBoard;
 
     void Start()
