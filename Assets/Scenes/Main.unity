@@ -1527,7 +1527,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1856436723}
   - component: {fileID: 1856436725}
-  - component: {fileID: 1856436724}
   m_Layer: 0
   m_Name: Target Camera
   m_TagString: Untagged
@@ -1549,14 +1548,6 @@ Transform:
   m_Father: {fileID: 534669905}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1856436724
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1856436722}
-  m_Enabled: 1
 --- !u!20 &1856436725
 Camera:
   m_ObjectHideFlags: 0
@@ -1851,6 +1842,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3423162541518634488, guid: b9d1c250a41f0524bb3c85c526d842a6,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1856436725}
     - target: {fileID: 7039799395844796225, guid: b9d1c250a41f0524bb3c85c526d842a6,
         type: 3}
       propertyPath: m_RootOrder
@@ -1916,11 +1912,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 3423162541518634488, guid: b9d1c250a41f0524bb3c85c526d842a6,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1856436725}
     - target: {fileID: 5868893585121173590, guid: b9d1c250a41f0524bb3c85c526d842a6,
         type: 3}
       propertyPath: m_LocalPosition.y

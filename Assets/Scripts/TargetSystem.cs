@@ -48,8 +48,6 @@ public class TargetSystem : MonoBehaviour
         {
             target = newTarget;
             target.GetComponent<Enemy>().enemyDeathEvent += onTargetDeath;
-
-            print("Target updated: " + target.name);
             SetNewTarget();
         }
 
@@ -70,27 +68,12 @@ public class TargetSystem : MonoBehaviour
 
     }
 
-    string GetTargetName()
-    {
-        switch (target.GetComponent<Enemy>().EnemyType)
-        {
-            case EnemyType.Light:
-                return "Light Cruiser";
-            case EnemyType.Medium:
-                return "Medium Cruiser";
-            case EnemyType.Heavy:
-                return "Heavy Cruiser";
-            default:
-                return "Ship";
-        }
-    }
-
     void UpdateTargetUI()
     {
         HealthBar.gameObject.SetActive(true);
         TargetName.gameObject.SetActive(true);
         TargetWorth.gameObject.SetActive(true);
-        TargetName.text = GetTargetName();
+        TargetName.text = target.GetComponent<Enemy>().GetName();
         TargetWorth.text = GetTargetWorth() + " points";
 
         HealthSystem hs = target.GetComponent<HealthSystem>();
@@ -111,7 +94,5 @@ public class TargetSystem : MonoBehaviour
         HealthBar.gameObject.SetActive(false);
         TargetName.gameObject.SetActive(false);
         TargetWorth.gameObject.SetActive(false);
-
-        print("Death of target: " + go.name);
     }
 }

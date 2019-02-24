@@ -43,6 +43,21 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
+    public string GetName()
+    {
+        switch (enemyType)
+        {
+            case EnemyType.Light:
+                return "Light Cruiser";
+            case EnemyType.Medium:
+                return "Medium Cruiser";
+            case EnemyType.Heavy:
+                return "Heavy Cruiser";
+            default:
+                return "Ship";
+        }
+    }
+
     private void OnParticleCollision(GameObject other)
     {
         TakeDamage();
