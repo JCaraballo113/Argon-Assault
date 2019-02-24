@@ -29,6 +29,11 @@ public class HealthSystem : MonoBehaviour
         return healthPoints;
     }
 
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     public void Damage(int damage)
     {
         healthPoints -= damage;

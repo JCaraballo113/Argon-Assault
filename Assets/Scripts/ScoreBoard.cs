@@ -20,7 +20,7 @@ public class ScoreBoard : MonoBehaviour
         
     }
 
-    int GetEnemyScore(EnemyType enemyType)
+    public int GetEnemyScore(EnemyType enemyType)
     {
         switch(enemyType)
         {

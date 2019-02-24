@@ -16,6 +16,11 @@ public class Enemy : MonoBehaviour, IDamageable
     HealthSystem healthSystem;
     ScoreBoard scoreBoard;
 
+    public EnemyType EnemyType { get => enemyType; set => enemyType = value; }
+
+    public event Action<GameObject> enemyDeathEvent;
+    public event Action<GameObject> enemyTargetedEvent;
+
     void Start()
     {
         gameObject.AddComponent<BoxCollider>();
@@ -45,10 +50,11 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void TakeDamage()
     {
-        scoreBoard.ScoreHit(enemyType);
         healthSystem.Damage(GetDamageByType());
         GameObject instance = Instantiate(hitFX, transform.position, Quaternion.identity);
         instance.transform.parent = parent;
+
+        if (enemyTargetedEvent != null) enemyTargetedEvent(gameObject);
 
         if (healthSystem.GetCurrentHealth() <= 0)
         {
@@ -58,8 +64,11 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void Kill()
     {
+        if(enemyDeathEvent != null) enemyDeathEvent(gameObject);
+
         GameObject instance = Instantiate(explosionFX, transform.position, Quaternion.identity);
         instance.transform.parent = parent;
+        scoreBoard.ScoreHit(enemyType);
         Destroy(gameObject);
     }
 }
