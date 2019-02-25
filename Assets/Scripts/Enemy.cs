@@ -33,9 +33,9 @@ public class Enemy : MonoBehaviour, IDamageable
         switch(enemyType)
         {
             case EnemyType.Light:
-                return 20;
+                return 25;
             case EnemyType.Medium:
-                return 15;
+                return 25;
             case EnemyType.Heavy:
                 return 10;
             default:
